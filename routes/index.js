@@ -6,7 +6,7 @@ var interface = require('../model/interface');
 router.get('/', function (req, res, next) {
     res.render('index', {title: 'Express'});
 });
-// test
+
 router.post('/newuser', function (req, res) {
     interface.addNewUser(req.body, function (err, data) {
         if (err) {
