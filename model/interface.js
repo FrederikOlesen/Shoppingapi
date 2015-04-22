@@ -18,4 +18,14 @@ function addNewUser(json, callback) {
     })
 }
 
-module.exports = {addNewUser: addNewUser};
+function login(json, callback) {
+    user.findOne({email: json.email}, function (err, person) {
+        if (err) {
+            return callback(err);
+        }
+        return callback(null, person);
+    })
+
+}
+
+module.exports = {addNewUser: addNewUser, login: login};
