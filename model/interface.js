@@ -23,7 +23,15 @@ function login(json, callback) {
         if (err) {
             return callback(err);
         }
-        return callback(null, person);
+        if (person === null) {
+            return callback("Either wrong email or password!");
+        } else {
+            if (json.password !== person.password) {
+                return callback("Either wrong email or password!");
+            } else {
+                return callback(null, person);
+            }
+        }
     })
 
 }
