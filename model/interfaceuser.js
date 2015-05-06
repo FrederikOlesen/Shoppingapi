@@ -19,7 +19,7 @@ function addNewUser(json, callback) {
 }
 
 function login(json, callback) {
-    user.findOne({email: json.email}, function (err, person) {
+    user.find({email: json.email}, function (err, person) {
         if (err) {
             return callback(err);
         }
