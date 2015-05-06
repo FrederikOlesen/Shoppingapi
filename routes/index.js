@@ -30,7 +30,7 @@ router.post('/login', function (req, res) {
                 res.status(403).send();
             } else {
                 var string = '{' + '"_id"' + ":" + '"' + data[0]._id + '"' + '}';
-                res.status(200).send(string);
+                res.status(200).send(data[0]._id);
             }
         }
     })
