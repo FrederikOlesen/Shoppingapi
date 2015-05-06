@@ -25,8 +25,14 @@ router.post('/login', function (req, res) {
             res.status(err.status || 400);
             res.end(JSON.stringify({error: err.toString()}));
             return;
+        } else {
+            if(req.body.password !== data[0].password){
+                res.status(403).send();
+            } else {
+                var string = '"_id":"' + data[0]._id + '"';
+                res.status(200).send(string);
+            }
         }
-        res.status(200).send(data);
     })
 })
 
