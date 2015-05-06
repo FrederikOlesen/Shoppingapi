@@ -36,6 +36,4 @@ function login(json, callback) {
 
 }
 
-
-
 module.exports = {addNewUser: addNewUser, login: login};

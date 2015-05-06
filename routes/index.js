@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var interface = require('../model/interfaceuser');
+var interfaceuser = require('../model/interfaceuser');
 var interfacelist = require('../model/interfacelist');
 
 /* GET home page. */
@@ -9,7 +9,7 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/newuser', function (req, res) {
-    interface.addNewUser(req.body, function (err, data) {
+    interfaceuser.addNewUser(req.body, function (err, data) {
         if (err) {
             res.status(err.status || 400);
             res.end(JSON.stringify({error: err.toString()}));
@@ -20,7 +20,7 @@ router.post('/newuser', function (req, res) {
 });
 
 router.post('/login', function (req, res) {
-    interface.login(req.body, function (err, data) {
+    interfaceuser.login(req.body, function (err, data) {
         if (err) {
             res.status(err.status || 400);
             res.end(JSON.stringify({error: err.toString()}));
