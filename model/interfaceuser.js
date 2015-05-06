@@ -29,7 +29,8 @@ function login(json, callback) {
             if (json.password !== person.password) {
                 return callback("Either wrong email or password!");
             } else {
-                return callback(null, person._id);
+                var jsontext = '{' + '"_id"' + ":" + '"' + person._id + '"' + '}';
+                return callback(null, (jsontext));
             }
         }
     })
