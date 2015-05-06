@@ -44,4 +44,15 @@ var users = new Schema({
 
 mongoose.model('userSchema', users, "users");
 
-module.exports.newUser = mongoose.model('userSchema')
+module.exports.newUser = mongoose.model('userSchema');
+
+var list = new Schema({
+    author: {type: Schema.Types.ObjectId, ref: 'users'},
+    subscribers: [{type: Schema.Types.ObjectId, ref: 'users'}],
+    listName: String,
+    items: [{itemName: String, checked: Boolean}]
+})
+
+mongoose.model('listSchema', list, "shoppingLists");
+
+module.exports.newList = mongoose.model('listSchema');
