@@ -27,7 +27,7 @@ router.post('/login', function (req, res) {
             return;
         } else {
             if(req.body.password !== data[0].password){
-                res.status(403).send();
+                res.status(403).send("WHAT");
             } else {
                 var UID = {_id:data[0]._id};
                 res.status(200).send(JSON.stringify(UID));
