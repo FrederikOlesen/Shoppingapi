@@ -29,7 +29,7 @@ router.post('/login', function (req, res) {
             if(req.body.password !== data[0].password){
                 res.status(403).send();
             } else {
-                var string = '{"_id":"' + data[0]._id + '"}';
+                var string = '{' + '"_id"' + ":" + '"' + data[0]._id + '"' + '}';
                 res.status(200).send(string);
             }
         }
