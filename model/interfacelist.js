@@ -19,7 +19,6 @@ function addList(json, callback) {
 };
 
 function findMyLists(authorID, callback) {
-
     list.find({$or: [{author: authorID}, {subscribers: authorID}]})
         .exec(function (error, lists) {
             if (error) {

@@ -26,7 +26,6 @@ function login(json, callback) {
             return callback(null, person);
         }
     })
-
 }
 
 module.exports = {addNewUser: addNewUser, login: login};
