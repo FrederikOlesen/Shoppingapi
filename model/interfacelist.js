@@ -28,4 +28,11 @@ function findMyLists(authorID, callback) {
         })
 };
 
-module.exports = {addList: addList, findMyLists: findMyLists}
+function updateList(json, callback){
+    list.findOneAndUpdate({_id:json._id}, {$set:json}, {new:true},function(err, json){
+        if(err) callback(err);
+        callback(null, json);
+    });
+}
+
+module.exports = {addList: addList, findMyLists: findMyLists, updateList: updateList}

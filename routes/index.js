@@ -53,4 +53,15 @@ router.get('/findLists/:authorID', function (req, res) {
     })
 });
 
+router.post("/updateList", function(req, res){
+    interfacelist.updateList(req.body, function(err, data){
+        if(err){
+            res.status(err.status || 400);
+            res.end(JSON.stringify({error: err.toString()}));
+            return;
+        }
+        res.status(200).send(data);
+    })
+});
+
 module.exports = router;
