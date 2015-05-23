@@ -71,7 +71,7 @@ router.post("/deleteList", function(req, res){
             res.end(JSON.stringify({error: err.toString()}));
             return;
         }
-        res.status(200).send(data);
+        res.status(200).send(true);
     })
 });
 
