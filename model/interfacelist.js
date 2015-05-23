@@ -31,4 +31,16 @@ function updateList(json, callback){
     });
 }
 
-module.exports = {addList: addList, findMyLists: findMyLists, updateList: updateList};
+function deleteList(json, callback){
+    list.remove({_id:json._id},function(err, json){
+        if(err) callback(err);
+        callback(null, json);
+    });
+}
+
+module.exports = {
+    addList: addList,
+    findMyLists: findMyLists,
+    updateList: updateList,
+    deleteList: deleteList
+};
