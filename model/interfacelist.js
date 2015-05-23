@@ -1,9 +1,5 @@
-/**
- * Created by fol on 06-05-2015.
- */
 
 var mongoose = require('mongoose');
-var db = require('./database');
 
 var list = mongoose.model('listSchema');
 
@@ -16,17 +12,17 @@ function addList(json, callback) {
             return callback(null, json);
         }
     })
-};
+}
 
-function findMyLists(authorID, callback) {
-    list.find({$or: [{author: authorID}, {subscribers: authorID}]})
+function findMyLists(phone, callback) {
+    list.find({$or: [{author: phone}, {subscribers: phone}]})
         .exec(function (error, lists) {
             if (error) {
-                return callback(err)
+                return callback(error)
             }
             return callback(null, lists);
         })
-};
+}
 
 function updateList(json, callback){
     list.findOneAndUpdate({_id:json._id}, {$set:json}, {new:true},function(err, json){
@@ -35,4 +31,4 @@ function updateList(json, callback){
     });
 }
 
-module.exports = {addList: addList, findMyLists: findMyLists, updateList: updateList}
+module.exports = {addList: addList, findMyLists: findMyLists, updateList: updateList};

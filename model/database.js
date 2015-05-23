@@ -12,7 +12,7 @@ if (typeof global.TEST_DATABASE != "undefined") {
     dbURI = global.TEST_DATABASE;
 }
 else {
-    dbURI = 'mongodb://admin:admin123@ds045031.mongolab.com:45031/shoppingapi';
+    dbURI = 'mongodb://admin:admin123@ds045021.mongolab.com:45021/shoppingapi';
 }
 
 mongoose.connect(dbURI);
@@ -38,7 +38,7 @@ process.on('SIGINT', function () {
 });
 
 var users = new Schema({
-    email: {type: String, unique: true},
+    _id: {type: String, unique: true},
     password: {type: String, required: true}
 });
 
@@ -47,8 +47,8 @@ mongoose.model('userSchema', users, "users");
 module.exports.newUser = mongoose.model('userSchema');
 
 var list = new Schema({
-    author: {type: Schema.Types.ObjectId, ref: 'users'},
-    subscribers: [{type: Schema.Types.ObjectId, ref: 'users'}],
+    author: {type: String, ref: 'users'},
+    subscribers: [{type: String, ref: 'users'}],
     listName: String,
     items: [{itemName: String, checked: Boolean}]
 })
